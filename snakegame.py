@@ -12,18 +12,18 @@ black        = (0,   0,   0)
 red          = (213, 50,  80)
 blue         = (50,  153, 213)
 dark_green   = (0,   100, 0)
-dark_green2  = (0,   80,  0)   # чуть темнее для тела
+dark_green2  = (0,   80,  0)   # darker for head than for body
 
 # window settings
 
-dis_width   = 600
-dis_height  = 600
+dis_width   = 800
+dis_height  = 800
 dis         = pygame.display.set_mode((dis_width, dis_height))
 pygame.display.set_caption('Snake-game')
 
 clock       = pygame.time.Clock()
-snake_block = 10
-BASE_SPEED  = 8
+snake_block = 20
+BASE_SPEED  = 3
 
 font_style  = pygame.font.SysFont("arial",       22)
 score_font  = pygame.font.SysFont("comicsansms", 35)
@@ -62,8 +62,8 @@ FOOD_WEIGHTS = {
     "normal":   50,
     "bonus":    20,
     "speed_up": 14,
-    "speed_dn": 12,
-    "death":    4,
+    "speed_dn": 14,
+    "death":    2,
 }
 
 
@@ -90,7 +90,6 @@ def draw_food(food):
 
 
 def our_snake(snake_block, snake_list):
-    '''snake is dark green'''
     for i, x in enumerate(snake_list):
         # head is lighter than body
         color = dark_green if i < len(snake_list) - 1 else (0, 140, 0)
