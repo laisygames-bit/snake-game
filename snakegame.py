@@ -155,13 +155,15 @@ def gameLoop():
         x1 += x1_change
         y1 += y1_change
 
-        # walls
-        if x1 >= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0:
-            game_close = True
+        # borders
+        x1 = x1 % dis_width
+        y1 = y1 % dis_height
 
         # background
         dis.fill(blue)
         draw_food(food)
+
+        clock.tick(60)
 
         snake_Head = [x1, y1]
         snake_List.append(snake_Head)
