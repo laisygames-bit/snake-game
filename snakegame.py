@@ -36,7 +36,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 def load_img(filename):
     path = os.path.join(BASE_DIR, filename)
     img  = pygame.image.load(path).convert_alpha()
-    return pygame.transform.scale(img, (15, 15))
+    return pygame.transform.scale(img, (20, 20))
 
 FOOD_IMAGES = {
     "normal":   load_img("images/green.apple.png"),   # +1 point
@@ -78,8 +78,8 @@ def pick_food_type():
 
 def new_food(snake_list):
     while True:
-        fx = round(random.randrange(0, dis_width  - snake_block) / 10.0) * 10.0
-        fy = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+        fx = random.randrange(0, dis_width  // snake_block) * snake_block
+        fy = random.randrange(0, dis_height // snake_block) * snake_block
         if [fx, fy] not in snake_list:
             break
     return {"x": fx, "y": fy, "type": pick_food_type()}
